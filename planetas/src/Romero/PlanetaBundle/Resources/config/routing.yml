@@ -1,0 +1,19 @@
+indexA:
+          path:     /
+          defaults: { _controller: RomeroPlanetaBundle:Default:index }
+
+verPlaneta:
+          path:     /{planeta}
+          defaults: { _controller: RomeroPlanetaBundle:Default:verPlaneta}
+
+insert:
+          path:     /insert/insertar
+          defaults: { _controller: RomeroPlanetaBundle:Default:create }
+
+update:
+          path:    /update/{id}
+          defaults: { _controller: RomeroPlanetaBundle:Default:update}
+
+three:
+          path:     /prueba/three
+          defaults: { _controller: RomeroPlanetaBundle:Default:three }
