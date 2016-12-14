@@ -15,5 +15,13 @@ update:
           defaults: { _controller: RomeroPlanetaBundle:Default:update}
 
 three:
-          path:     /prueba/three
-          defaults: { _controller: RomeroPlanetaBundle:Default:three }
+          path:     /planetaria/sistema
+          defaults: { _controller: RomeroPlanetaBundle:Default:sistema }
+
+comparador:
+          path:     /planetaria/comparador
+          defaults: { _controller: RomeroPlanetaBundle:Default:comparador }
+
+portfolio:
+          path:     /prueba/portfolio
+          defaults: { _controller: RomeroPlanetaBundle:Default:portfolio}

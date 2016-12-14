@@ -1,0 +1,194 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/sistema.css') }}">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style2.css') }}" />
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/interplanetary_Regular.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.dropdown.js') }}"></script>
+    <script src="{{ asset('js/modernizr.custom.63321.js') }}"></script>
+
+
+
+</head>
+
+
+    <body>
+
+<div id="loading-container">
+    <div id="contenedor"></div>
+</div>
+<div id="menuPrueba">
+<select onChange="showInfo()" id="cd-dropdown" class="cd-select">
+    <option value="-1" selected>Viajar a ...</option>
+    <option value="1" >Mercurio</option>
+    <option value="2" >Venus</option>
+    <option value="3" >La Tierra</option>
+    <option value="4" >Marte</option>
+    <option value="5" >Jupiter</option>
+    <option value="6" >Saturno</option>
+    <option value="7" >Urano</option>
+    <option value="8" >Neptuno</option>
+    <option value="9">eyey</option>
+</select>
+</div>
+
+<div id="informacionB" class="alert alert-info">
+    <strong>!Bienvenido al Sistema Solar de Planetaria!</strong> Es un placer verte por aqui, disfruta de la experiencia y aprende mucho.
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
+<div id="informacionone" class="alert alert-info">
+    <strong>¿Quieres viajar de un planeta a otro?</strong> Utiliza el botón de la izquierda para abrir el panel de viaje.
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
+<div id="informaciontwo" class="alert alert-info">
+     <strong>¿Ya has viajado?</strong> Puedes utilizar el boton inferior derecho para activar/desactivar la orbita, la rotacion, el angulo y la informacion del planeta.
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
+
+<div id="divNombrePlaneta" class="row">
+    <div class="col-md-2">
+        <button type="button" class="two btn-default" id="botonOpciones" onclick="opciones(2)"><img src="{{ asset('iconos/orbita.png') }}"></button>
+    </div>
+    <div class="col-md-3">
+        <button type="button" class="one btn-default" id="botonOpciones" onclick="opciones(1)"><img src="{{ asset('iconos/rotar.png') }}"></button>
+    </div>
+    <div class="col-md-2">
+        <p align="center" id="pNombrePlaneta"></p>
+    </div>
+    <div class="col-md-3">
+        <button type="button" class="three btn-default" id="botonOpciones" onclick="opciones(3)"><img src="{{ asset('iconos/camara.png') }}"></button>
+    </div>
+    <div class="col-md-2">
+        <button type="button" class="four btn-default" id="botonOpciones" onclick="iplanetas()"><img src="{{ asset('iconos/info.png') }}"></button>
+    </div>
+</div>
+
+<div id="dPlanetas"></div>
+
+<div id="ePlanetas"></div>
+
+<button id="botonMenuPlanet" type="button" class="btn-default"><img src="{{ asset('iconos/map.png') }}"> </button>
+
+<a href="/"><button id="botonVolver" type="button" class="btn-default"><img src="{{ asset('iconos/home.png') }}"></button></a>
+
+<button id="botonSonido" type="button" class="btn-default" onclick="sonido()"><img id="iconosonido" src="{{ asset('iconos/unmute.png') }}"></button>
+
+<div id="inferior">
+    <button type="button" class="btn-default" id="botonMenu" onclick="showInfo(1)">Mercurio</button>
+    <button type="button" class="btn-default" id="botonMenu" onclick="showInfo(2)">Venus</button>
+    <button type="button" class="btn-default" id="botonMenu" onclick="showInfo(3)">Tierra</button>
+    <button type="button" class="btn-default" id="botonMenu" onclick="showInfo(4)">Marte</button>
+    <button type="button" class="btn-default" id="botonMenu" onclick="showInfo(5)">Jupiter</button>
+    <button type="button" class="btn-default" id="botonMenu" onclick="showInfo(6)">Saturno</button>
+    <button type="button" class="btn-default" id="botonMenu" onclick="showInfo(7)">Urano</button>
+    <button type="button" class="btn-default" id="botonMenu" onclick="showInfo(8)">Neptuno</button>
+</div>
+
+
+<script>
+
+    var i=1;
+
+    $("#botonMenuPlanet").click(function() {
+
+        $("#inferior").toggleClass("toggled");
+        $("#botonMenuPlanet").toggleClass("toggled");
+
+    });
+
+
+    $(document).ready(function() {
+        setTimeout(function() {
+            $("#informacionB").fadeIn(2000);
+        },10000);
+        setTimeout(function() {
+            $("#informacionB").fadeOut(2000);
+        },17000);
+        setTimeout(function() {
+            $("#informacionone").fadeIn(2000);
+        },20000);
+        setTimeout(function() {
+            $("#informacionone").fadeOut(2000);
+        },27000);
+        setTimeout(function() {
+            $("#informaciontwo").fadeIn(2000);
+        },30000);
+        setTimeout(function() {
+            $("#informaciontwo").fadeOut(2000);
+        },37000);
+    });
+
+    //to display loading animation before it's ready
+
+</script>
+
+<script type="x-shader/x-vertex" id="vertexshader">
+
+			uniform float amplitude;
+
+			attribute vec3 displacement;
+			attribute vec3 customColor;
+
+			varying vec3 vColor;
+
+			void main() {
+
+				vec3 newPosition = position + amplitude * displacement;
+
+				vColor = customColor;
+
+				gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
+
+			}
+
+		</script>
+
+<script type="x-shader/x-fragment" id="fragmentshader">
+
+			uniform vec3 color;
+			uniform float opacity;
+
+			varying vec3 vColor;
+
+			void main() {
+
+				gl_FragColor = vec4( vColor * color, opacity );
+
+			}
+
+		</script>
+
+<script type="text/javascript">
+    
+    $( function() {
+
+        $( '#cd-dropdown' ).dropdown( {
+            gutter : 5,
+            stack : false,
+            delay : 100,
+            slidingIn : 100
+        } );
+
+    });
+
+</script>
+
+<script src="{{ asset('js/three.js') }}"></script>
+<script src="{{ asset('js/GPUParticleSystem.js') }}" charset="utf-8"></script>
+<script src="{{ asset('js/ParticleEngine.js') }}"></script>
+<script src="{{ asset('js/ParticleEngineExamples.js') }}"></script>
+<script src="{{ asset('js/OrbitControls.js') }}"></script>
+<script src="{{ asset('js/sistemaSolar.js') }}"></script>
+
+
+
+
+
+
+
+    </body>
+
+</html>

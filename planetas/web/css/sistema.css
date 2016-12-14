@@ -1,0 +1,334 @@
+@font-face {
+    font-family: "Impact";
+    src: url("../font/interplanetary/interplanetary.ttf") format("truetype");
+}
+/*
+@font-face {
+    font-family: "Impact";
+    src: url("../font/3Dumb/3Dumb.ttf") format("truetype");
+}*/
+
+@font-face {
+    font-family: "Hilarious";
+    src: url("../font/hilarious/HilariousComics.ttf") format("truetype");
+}
+
+body,html{
+    height:100%; /*Siempre es necesario cuando trabajamos con alturas*/
+    color:white;
+    overflow: hidden;
+    background-color: black;
+}
+
+#informacionB{
+    display: none;
+    width: 200px;
+    position:absolute;
+    top: 2%;
+    left: 4%;
+    z-index: 4;
+}
+#informacionone{
+    display: none;
+    width: 200px;
+    position:absolute;
+    bottom: 0%;
+    left: 5%;
+    z-index: 4;
+}
+#informaciontwo{
+    display: none;
+    width: 200px;
+    position:absolute;
+    bottom: 0%;
+    right: 5%;
+    z-index: 4;
+}
+
+#divNombrePlaneta{
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    display: none;
+    position:absolute;
+    margin: 0 auto;
+    z-index: 100;
+    top:5%;
+    left: 25%;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    font-family: interplanetary;
+}
+
+#pNombrePlaneta{
+ }
+
+#dPlanetas{
+    display: none;
+    color: white;
+    opacity: 1;
+    background: black;
+    position: absolute;
+    overflow-y:hidden;
+    overflow-x:hidden;
+    margin: 0px 0px 10% auto;
+    z-index: 1;
+    left:0px; /*A la derecha deje un espacio de 0px*/
+    right:0px; /*A la izquierda deje un espacio de 0px*/
+    bottom:0px; /*Abajo deje un espacio de 0px*/
+    width:0px; /*alto del div*/
+    height: auto;
+    width: 400px;
+
+}
+
+#ePlanetas{
+    display: none;
+    color: white;
+    opacity: 1;
+    background: black;
+    position: absolute;
+    overflow-y:hidden;
+    overflow-x:hidden;
+    margin: 0px auto 10% 0px;
+    z-index: 1;
+    left:0px; /*A la derecha deje un espacio de 0px*/
+    right:0px; /*A la izquierda deje un espacio de 0px*/
+    bottom:0px; /*Abajo deje un espacio de 0px*/
+    width:0px; /*alto del div*/
+    height: auto;
+    width: 400px;
+
+}
+
+#dropdownMenu1 {
+    opacity: 0.4;
+    bottom:90% ;
+    left:1%;
+    position: fixed;
+    }
+
+#dropdownMenu2 {
+    opacity: 0.4;
+    bottom:90% ;
+    left:95%;
+    position: fixed;
+}
+
+#drop2 li{float:right;position:relative;}
+
+#drop2 {
+    left:-175%;
+}
+
+
+#botonMenuPlanet {
+    display: none;
+    border: 3px solid white;
+    background-color: white;
+    opacity: 0.4;
+    bottom:2% ;
+    left:1%;
+    z-index: 3;
+    position: absolute;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+}
+
+#botonVolver {
+    display: none;
+    border: 3px solid white;
+    background-color: white;
+    opacity: 0.4;
+    top:2% ;
+    right:1%;
+    z-index: 2;
+    position: absolute;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+}
+
+#botonSonido {
+    display: none;
+    border: 3px solid white;
+    background-color: white;
+    opacity: 0.4;
+    top:10% ;
+    right:1%;
+    z-index: 2;
+    position: absolute;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+}
+
+#iconosonido{}
+
+#botonMenuOpciones{
+    border: 3px solid white;
+    background-color: white;
+    opacity: 0.4;
+    bottom:2% ;
+    right:1%;
+    position: absolute;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+}
+
+#botonMenuPlanet.toggled,#botonMenuOpciones.toggled{
+    bottom:10%;
+}
+#botonMenuPlanet.toggled2, #botonMenuOpciones.toggled2{
+    display: none;
+}
+
+#inferior {
+    background: linear-gradient(to top,  white 0%,white 95%,dodgerblue 95%,dodgerblue 100%);
+    opacity: 0.4;
+    position: absolute;
+    overflow-y: auto;
+    margin: 0 auto;
+    z-index: 100;
+    left:0px; /*A la derecha deje un espacio de 0px*/
+    right:0px; /*A la izquierda deje un espacio de 0px*/
+    bottom:0px; /*Abajo deje un espacio de 0px*/
+    height:0px; /*alto del div*/
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#inferior.toggled,#inferior2.toggled {
+    height: 60px;
+}
+
+#botonMenu{
+    width: 100px;
+    height: 40px;
+    font-weight: bold;
+    font-size:20px;
+    background-color: black;
+    opacity: 1;
+    color: white;
+    position: relative;
+    left: 18%;
+    top:20%;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 3px solid black;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    font-family: interplanetary;
+}
+
+#botonMenu:hover{
+    background-color: dodgerblue;
+}
+
+#botonOpciones{
+    width: 100px;
+    height: 40px;
+    background-color: transparent;
+    opacity: 1;
+    color: white;
+    position: relative;
+    top:20%;
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    border: 3px solid black;
+}
+
+
+#botonOpciones.three{
+    left: 35%;
+}
+#botonOpciones.four{
+    left: 40%;
+}
+
+#botonOpciones:hover,#botonMenu:hover,#botonMenuOpciones:hover,#botonMenuPlanet:hover,#botonVolver:hover{
+    background-color: #D9EDF7;
+}
+
+
+#uno,#dos{
+    left: 47.5%;
+    bottom: 50%;
+    width: 400px;
+    position: absolute;
+    z-index: 100;
+    display: none;
+}
+
+#menuPrueba{
+
+    position: absolute;
+    top: 2%;
+    left: 40%;
+
+
+}
+
+/*loading screen*/
+.onepix-imgloader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1000;
+}
+
+/*hide the second element in the loading container (first element is the leading img)*/
+.loading-container > *:not(.onepix-imgloader) {
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    -khtml-opacity:0;
+    opacity:0;
+}
+
+.loading-container {
+    position: relative;
+    background: #dfdfdf;
+    min-height: 40px;
+    height: 400px;
+}
+
+#container {
+    /*    min-width: 400px;*/
+    min-height: 400px;
+}
+
+
+
+
+
+

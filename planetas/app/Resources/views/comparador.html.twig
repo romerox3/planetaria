@@ -1,0 +1,133 @@
+<html>
+<head>
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/sistema.css') }}">
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+</head>
+
+
+<body>
+
+<div id="contenedor"></div>
+
+<a href="/"><button id="botonVolver" type="button" class="btn-default"><img src="{{ asset('iconos/home.png') }}"></button></a>
+
+
+<div class="dropdown" id="dropdownMenu1">
+
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+        <img src="{{ asset('iconos/aliIzq.png') }}">
+    </button>
+
+
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="seleccion1(1)">Mercurio</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="seleccion1(2)">Venus</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="seleccion1(3)">La Tierra</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="seleccion1(4)">Marte</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="seleccion1(5)">Jupiter</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="seleccion1(6)">Saturno</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="seleccion1(7)">Urano</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="seleccion1(8)">Neptuno</a>
+        </li>
+    </ul>
+</div>
+
+<div class="dropdown" id="dropdownMenu2">
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+        <img src="{{ asset('iconos/aliDer.png') }}">
+    </button>
+
+    <ul class="dropdown-menu" id="drop2" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="seleccion2(1)">Mercurio</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="seleccion2(2)">Venus</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="seleccion2(3)">La Tierra</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="seleccion2(4)">Marte</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="seleccion2(5)">.Jupiter</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="seleccion2(6)">Saturno</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="seleccion2(7)">Urano</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="seleccion2(8)">Neptuno</a>
+        </li>
+    </ul>
+</div>
+
+<div id="inferior">
+<button type="button" class="btn-default" id="botonMenu" onclick="seleccion1(1)">Mercurio</button>
+<button type="button" class="btn-default" id="botonMenu" onclick="seleccion1(2)">Venus</button>
+<button type="button" class="btn-default" id="botonMenu" onclick="seleccion2(1)">Tierra</button>
+<button type="button" class="btn-default" id="botonMenu" onclick="seleccion2(2)">Marte</button>
+</div>
+
+<script>
+
+    $("#botonMenuPlanet").click(function() {
+
+        $("#inferior").toggleClass("toggled");
+        $("#botonMenuPlanet").toggleClass("toggled");
+        $("#botonMenuOpciones").toggleClass("toggled2");
+
+    });
+
+</script>
+
+<script id="vertexShaderAtmosphere" type="x-shader/x-vertex">
+varying vec3 vNormal;
+void main()
+{
+    vNormal = normalize( normalMatrix * normal );
+    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+}
+</script>
+
+<!-- fragment shader a.k.a. pixel shader -->
+<script id="fragmentShaderAtmosphere" type="x-shader/x-vertex">
+uniform float c;
+uniform float p;
+varying vec3 vNormal;
+void main()
+{
+	float intensity = pow( c - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) ), p );
+	gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 ) * intensity;
+}
+</script>
+
+<script src="{{ asset('js/three.min.js') }}"></script>
+<script src="{{ asset('js/TrackballControls.js') }}"></script>
+<script src="{{ asset('js/comparador.js') }}"></script>
+
+</body>
+
+</html>

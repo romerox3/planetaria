@@ -17,9 +17,19 @@ class DefaultController extends Controller
         return $this->render('::base.html.twig');
     }
 
-    public function threeAction()
+    public function sistemaAction()
     {
-        return $this->render('::three.html.twig');
+        return $this->render('::sistema.html.twig');
+    }
+
+    public function comparadorAction()
+    {
+        return $this->render('::comparador.html.twig');
+    }
+
+    public function portfolioAction()
+    {
+        return $this->render('::portfolio.html.twig');
     }
 
     /**
